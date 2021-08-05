@@ -1,5 +1,6 @@
 export class Place {
-  constructor(placeId: string, title: string, description: string, imageUrl: string, numOfCases: number) {
-
+  // public placeId: string;
+  constructor(public placeId: string, public title: string, public description: string, public imageUrl: string, public numOfCases: number) {
+    // this.placeId = placeId;
   }
 }

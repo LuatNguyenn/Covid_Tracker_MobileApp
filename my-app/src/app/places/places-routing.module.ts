@@ -19,18 +19,27 @@ const routes: Routes = [
 
 
       //in case navigate to /places/tabs
-      { path: '', redirectTo: '/places/tabs/discover', pathMatch: 'full' }
+      // { path: '', redirectTo: '/places/tabs/discover', pathMatch: 'full' }
+
+
+      {
+        //need to match tab name
+        path: 'offers', children: [
+          { path: '', loadChildren: () => import('./offers/offers.module').then(m => m.OffersPageModule) },
+          { path: 'new', loadChildren: () => import('./offers/new-offer/new-offer.module').then(m => m.NewOfferPageModule) }, //hard code route first
+          { path: 'edit/:placeId', loadChildren: () => import('./offers/edit-offer/edit-offer.module').then(m => m.EditOfferPageModule) },
+          { path: ':placeId', loadChildren: () => import('./offers/place-booking/place-booking.module').then(m => m.PlaceBookingPageModule) },
+        ]
+      },
+      {
+        path: '',
+        redirectTo: '/places/tabs/discover',
+        pathMatch: 'full'
+      }
     ]
   },
-  {
-    //need to match tab name
-    path: 'offers', children: [
-      { path: '', loadChildren: () => import('./offers/offers.module').then(m => m.OffersPageModule) },
-      { path: 'new', loadChildren: () => import('./offers/new-offer/new-offer.module').then(m => m.NewOfferPageModule) }, //hard code route first
-      { path: 'edit/:placeId', loadChildren: () => import('./offers/edit-offer/edit-offer.module').then(m => m.EditOfferPageModule) },
-      { path: ':placeId', loadChildren: () => import('./offers/place-booking/place-booking.module').then(m => m.PlaceBookingPageModule) },
-    ]
-  },
+
+
   { path: '', redirectTo: 'tabs/discover', pathMatch: 'full' } //pathMatch to ensure correct path places/tabs...
 
 ];

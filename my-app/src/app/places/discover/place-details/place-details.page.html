@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>place-details</ion-title>
+    <!-- the back button need to be wrapped inside the icon-buttons  -->
+    <ion-buttons slot="start">
+      <!-- need to have 'defaul-href' to display back button if reload the page -->
+      <ion-back-button defaulHref="/places/tabs/discover">Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-button color="primary" class="ion-margin" (click)="onBookPlace()">
+    Add Place
+  </ion-button>
 </ion-content>
