@@ -10,14 +10,14 @@ const routes: Routes = [
     children: [
       {
         path: 'discover', children: [
-          { path: '', loadChildren: () => import('./discover/discover.module').then(m => m.DiscoverPageModule) }
+          { path: '', loadChildren: () => import('./discover/discover.module').then(m => m.DiscoverPageModule) },
+          {
+            path: ':placeId', loadChildren: () => import('./discover/place-details/place-details.module').then(m => m.PlaceDetailsPageModule)
+          },
         ]
       },
 
-      {
-        path: ':placeId',
-        loadChildren: () => import('./discover/place-details/place-details.module').then(m => m.PlaceDetailsPageModule)
-      },
+
       //in case navigate to /places/tabs
       { path: '', redirectTo: '/places/tabs/discover', pathMatch: 'full' }
     ]
