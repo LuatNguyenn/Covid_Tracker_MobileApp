@@ -1,10 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Place } from './offers/place.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlacesService {
+
   private _places: Place[] = [
     {placeId: `p1`, title: `title 1`, description: `This is Canada 1`, imageUrl: `https://picsum.photos/id/10/150/150`, numOfCases: 3241},
     {placeId: `p2`, title: `title 2`, description: `This is Canada 2`, imageUrl: `https://picsum.photos/id/20/150/150`, numOfCases: 3242},
@@ -22,4 +26,7 @@ export class PlacesService {
   }
 
   constructor() { }
+
+
+
 }

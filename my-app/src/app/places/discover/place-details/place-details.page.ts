@@ -4,6 +4,7 @@ import { CreateBookingComponent } from './../../../bookings/create-booking/creat
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NavController, ModalController } from '@ionic/angular';
+import { CovidService } from 'src/app/Services/covid.service';
 
 @Component({
   selector: 'app-place-details',
@@ -12,7 +13,8 @@ import { NavController, ModalController } from '@ionic/angular';
 })
 export class PlaceDetailsPage implements OnInit {
   place: Place;
-  constructor(private placeService:PlacesService, private router: Router,private route: ActivatedRoute, private navCtrl: NavController, private modalCtrl: ModalController) { }
+  covidObj: any;
+  constructor(private covidService: CovidService,private placeService:PlacesService, private router: Router,private route: ActivatedRoute, private navCtrl: NavController, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
@@ -20,7 +22,10 @@ export class PlaceDetailsPage implements OnInit {
         this.navCtrl.navigateBack('/places/tabs/discover');
         return;
       }
-      this.place = this.placeService.getPlaceById(param.get('placeId'));
+      // this.place = this.placeService.getPlaceById(param.get('placeId'));
+      this.covidService.getCovidByCountryName(param.get('placeId')).subscribe(res => {
+        this.covidObj = res[0];
+      })
     })
   }
   onBookPlace() {

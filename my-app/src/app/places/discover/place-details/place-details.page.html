@@ -10,7 +10,42 @@
 </ion-header>
 
 <ion-content>
+  <h2 class="ion-text-center">{{covidObj?.country}}</h2>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>CONFIRMED CASES</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.confirmed | number}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>CRITICAL CASES</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.critical | number}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>DEATHS</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.deaths | number}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>RECOVERED</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.recovered | number}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <p class="ion-text-center">Last Update: {{covidObj?.lastUpdate | date:'mediumDate'}}</p>
+
+</ion-content>
+
+<!-- <ion-content>
   <ion-button color="primary" class="ion-margin" (click)="onBookPlace()">
     Add Place
   </ion-button>
-</ion-content>
+</ion-content> -->
