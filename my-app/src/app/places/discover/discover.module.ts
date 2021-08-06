@@ -8,13 +8,14 @@ import { DiscoverPageRoutingModule } from './discover-routing.module';
 
 import { DiscoverPage } from './discover.page';
 import { HttpClientModule } from '@angular/common/http';
-
+import { TableModule } from 'ngx-easy-table';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DiscoverPageRoutingModule
+    DiscoverPageRoutingModule,
+    TableModule
   ],
   declarations: [DiscoverPage]
 })

@@ -14,7 +14,11 @@ import { CovidService } from 'src/app/Services/covid.service';
 export class PlaceDetailsPage implements OnInit {
   place: Place;
   covidObj: any;
-  constructor(private covidService: CovidService,private placeService:PlacesService, private router: Router,private route: ActivatedRoute, private navCtrl: NavController, private modalCtrl: ModalController) { }
+  constructor(private covidService: CovidService,private placeService:PlacesService,
+    private router: Router,private route: ActivatedRoute, private navCtrl: NavController,
+     private modalCtrl: ModalController) {
+      // this.router.getCurrentNavigation().extras.state
+      }
 
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
@@ -22,10 +26,12 @@ export class PlaceDetailsPage implements OnInit {
         this.navCtrl.navigateBack('/places/tabs/discover');
         return;
       }
+      //getting object data from discover component
+      this.covidObj = history.state;
       // this.place = this.placeService.getPlaceById(param.get('placeId'));
-      this.covidService.getCovidByCountryName(param.get('placeId')).subscribe(res => {
-        this.covidObj = res[0];
-      })
+      // this.covidService.getCovidByCountryName(param.get('placeId')).subscribe(res => {
+      //   this.covidObj = res[0];
+      // })
     })
   }
   onBookPlace() {

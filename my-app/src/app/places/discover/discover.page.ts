@@ -4,7 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { Place } from '../offers/place.model';
 import { LocationService } from 'src/app/Services/location.service';
 import { CovidService } from 'src/app/Services/covid.service';
-import { CookieService} from 'ngx-cookie-service'
+import { CookieService } from 'ngx-cookie-service'
+import { Config, Columns, DefaultConfig } from 'ngx-easy-table';
 
 @Component({
   selector: 'app-discover',
@@ -16,6 +17,26 @@ export class DiscoverPage implements OnInit {
   location: any;
   covidObj: any = [];
 
+
+  public configuration: Config;
+  public columns: Columns[];
+
+  public data = [{
+    phone: '+1 (934) 551-2224',
+    age: 20,
+    address: { street: 'North street', number: 12 },
+    company: 'ZILLANET',
+    name: 'Valentine Webb',
+    isActive: false,
+  }, {
+    phone: '+1 (948) 460-3627',
+    age: 31,
+    address: { street: 'South street', number: 12 },
+    company: 'KNOWLYSIS',
+    name: 'Heidi Duncan',
+    isActive: true,
+  }];
+
   constructor(private covidService: CovidService, private cookiesService: CookieService,
     private locationService: LocationService, private placeService: PlacesService, private menuCtrl: MenuController) { }
 
@@ -24,17 +45,15 @@ export class DiscoverPage implements OnInit {
     this.locationService.getLocation().subscribe((data) => {
       this.location = data
       this.covidService.getCovidByCountryName(this.location.country.name).subscribe(res => {
-        this.covidObj = res;
-        console.log("🚀 ~ file: discover.page.ts ~ line 28 ~ DiscoverPage ~ this.covidService.getCovidByCountryName ~ this.covidObj", this.covidObj)
-        //save data obj to Cookies
-        this.cookiesService.set('covid-data', this.covidObj[0])
+        this.covidObj = res[0];
       })
-      console.log("🚀 ~ file: discover.page.ts ~ line 22 ~ DiscoverPage ~ this.locationService.getLocation ~ this.location", this.location)
     })
+  }
+
   }
 
   // onOpenMenu(){
   //   this.menuCtrl.toggle();
   // }
 
-}
+

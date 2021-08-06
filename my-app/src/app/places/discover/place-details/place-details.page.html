@@ -12,21 +12,21 @@
 <ion-content>
   <h2 class="ion-text-center">{{covidObj?.country}}</h2>
   <ion-card>
-    <ion-card-header>
+    <ion-card-header id="confirmedCases">
       <ion-card-subtitle>CONFIRMED CASES</ion-card-subtitle>
       <ion-card-title>{{covidObj?.confirmed | number}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
   <ion-card>
-    <ion-card-header>
+    <ion-card-header id="criticalCases">
       <ion-card-subtitle>CRITICAL CASES</ion-card-subtitle>
       <ion-card-title>{{covidObj?.critical | number}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
   <ion-card>
-    <ion-card-header>
+    <ion-card-header id="death">
       <ion-card-subtitle>DEATHS</ion-card-subtitle>
       <ion-card-title>{{covidObj?.deaths | number}}</ion-card-title>
     </ion-card-header>
@@ -34,7 +34,7 @@
 
 
   <ion-card>
-    <ion-card-header>
+    <ion-card-header id="recover">
       <ion-card-subtitle>RECOVERED</ion-card-subtitle>
       <ion-card-title>{{covidObj?.recovered | number}}</ion-card-title>
     </ion-card-header>
