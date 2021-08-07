@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { PlacesService } from './../places.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,8 +23,8 @@ export class DiscoverPage implements OnInit {
   countryList: string[] = ['india', 'usa', 'vietnam', 'brazil', 'japan'];
 
 
-  constructor(private covidService: CovidService, private cookiesService: CookieService,
-    private locationService: LocationService, private placeService: PlacesService, private menuCtrl: MenuController) { }
+  constructor(private covidService: CovidService, private cookiesService: CookieService, private route: Router
+   , private locationService: LocationService, private placeService: PlacesService, private menuCtrl: MenuController) { }
 
   ngOnInit() {
     this.loadedPlaces = this.placeService.places;
@@ -45,12 +46,24 @@ export class DiscoverPage implements OnInit {
         else{
           res.latest_stat_by_country[0].new_cases = '+' + res.latest_stat_by_country[0].new_cases
         }
-
         this.covidCountryList.push(res.latest_stat_by_country[0]);
-        console.log("🚀 ~ file: discover.page.ts ~ line 43 ~ DiscoverPage ~ this.covidService.getCovidByCountryName2 ~ this.covidCountryList", this.covidCountryList)
       })
     })
   }
+
+  navigateToDetails(c){
+    this.cookiesService.deleteAll('country');
+    console.log(c)
+    //need to convert to string before saving to cookie
+    this.cookiesService.set('country', JSON.stringify(c))
+    this.route.navigate(['/', 'places', 'tabs', 'discover', c.country_name])
+  }
+  navigateToDetailsLocation(){
+    console.log(this.location.country_name)
+    this.cookiesService.set('country', JSON.stringify(this.covidObj))
+    this.route.navigate(['/', 'places', 'tabs', 'discover', this.covidObj.country_name])
+  }
+
 }
 
   // onOpenMenu(){

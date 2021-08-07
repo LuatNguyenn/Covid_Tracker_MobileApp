@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { PlacesService } from './../../places.service';
 import { Place } from './../../offers/place.model';
 import { CreateBookingComponent } from './../../../bookings/create-booking/create-booking.component';
@@ -14,7 +15,7 @@ import { CovidService } from 'src/app/Services/covid.service';
 export class PlaceDetailsPage implements OnInit {
   place: Place;
   covidObj: any;
-  constructor(private covidService: CovidService,private placeService:PlacesService,
+  constructor(private CookieService: CookieService, private covidService: CovidService,private placeService:PlacesService,
     private router: Router,private route: ActivatedRoute, private navCtrl: NavController,
      private modalCtrl: ModalController) {
       // this.router.getCurrentNavigation().extras.state
@@ -26,8 +27,13 @@ export class PlaceDetailsPage implements OnInit {
         this.navCtrl.navigateBack('/places/tabs/discover');
         return;
       }
+      this.covidObj = JSON.parse(this.CookieService.get('country'))
+      console.log(this.covidObj)
       //getting object data from discover component
-      this.covidObj = history.state;
+      // history.state.this.subscribe(arg => console.log(arg));
+      ;
+      // console.log(this.covidObj)
+      // console.log(history.state)
       // this.place = this.placeService.getPlaceById(param.get('placeId'));
       // this.covidService.getCovidByCountryName(param.get('placeId')).subscribe(res => {
       //   this.covidObj = res[0];
