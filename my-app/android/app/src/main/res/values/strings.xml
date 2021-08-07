@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">COVID 19 Tracker</string>
+    <string name="title_activity_main">COVID 19 Tracker</string>
+    <string name="package_name">luat.nguyen.dev</string>
+    <string name="custom_url_scheme">luat.nguyen.dev</string>
+</resources>

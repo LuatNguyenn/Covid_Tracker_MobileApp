@@ -1,0 +1,6 @@
+{
+	"appId": "luat.nguyen.dev",
+	"appName": "my-app",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

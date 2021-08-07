@@ -10,37 +10,58 @@
 </ion-header>
 
 <ion-content>
-  <h2 class="ion-text-center">{{covidObj?.country}}</h2>
+  <h2 class="ion-text-center">{{covidObj?.country_name}}</h2>
   <ion-card>
     <ion-card-header id="confirmedCases">
-      <ion-card-subtitle>CONFIRMED CASES</ion-card-subtitle>
-      <ion-card-title>{{covidObj?.confirmed | number}}</ion-card-title>
+      <ion-card-subtitle>TOTAL CASES</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.total_cases}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngIf="covidObj?.new_cases">
+    <ion-card-header id="newCases">
+      <ion-card-subtitle>NEW CASES</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.new_cases}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header id="activeCases">
+      <ion-card-subtitle>ACTIVE CASES</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.active_cases}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
   <ion-card>
     <ion-card-header id="criticalCases">
       <ion-card-subtitle>CRITICAL CASES</ion-card-subtitle>
-      <ion-card-title>{{covidObj?.critical | number}}</ion-card-title>
+      <ion-card-title>{{covidObj?.serious_critical}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
   <ion-card>
     <ion-card-header id="death">
-      <ion-card-subtitle>DEATHS</ion-card-subtitle>
-      <ion-card-title>{{covidObj?.deaths | number}}</ion-card-title>
+      <ion-card-subtitle>TOTAL DEATHS</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.total_deaths}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
+  <ion-card *ngIf="covidObj?.new_deaths">
+    <ion-card-header id="newDeath">
+      <ion-card-subtitle>NEW DEATHS</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.new_deaths}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
   <ion-card>
     <ion-card-header id="recover">
-      <ion-card-subtitle>RECOVERED</ion-card-subtitle>
-      <ion-card-title>{{covidObj?.recovered | number}}</ion-card-title>
+      <ion-card-subtitle>TOTAL RECOVERED</ion-card-subtitle>
+      <ion-card-title>{{covidObj?.total_recovered}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
-  <p class="ion-text-center">Last Update: {{covidObj?.lastUpdate | date:'mediumDate'}}</p>
+  <p class="ion-text-center">Last Update: {{covidObj?.record_date_pure | date:'mediumDate'}}</p>
 
 </ion-content>
 

@@ -1,14 +1,20 @@
 #confirmedCases{
-  background-color: #4b4b4b;
+  background-color: #856f0d;
 }
 #criticalCases{
   background-color: #fb4646;
 }
 #death{
-  background-color: #3437f3;
+  background-color: #1b1b1b;
 }
 #recover{
   background-color: #01971a;
+}
+#activeCases{
+  background-color: rgb(102, 7, 7)
+}
+#newDeath{
+  background-color: rgb(61, 61, 61)
 }
 ion-card-subtitle, ion-card-title{
   color: white;

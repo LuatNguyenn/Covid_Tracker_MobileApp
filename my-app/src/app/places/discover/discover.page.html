@@ -17,7 +17,7 @@
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>Total Cases in {{location?.country?.name}}</ion-card-subtitle>
-            <ion-card-title color="danger">{{covidObj?.confirmed | number}}</ion-card-title>
+            <ion-card-title color="danger">{{covidObj?.total_cases}}</ion-card-title>
           </ion-card-header>
           <ion-img [src]="loadedPlaces[0].imageUrl"></ion-img>
           <ion-card-content>
@@ -52,14 +52,15 @@
         <ion-list>
           <!-- slice means go from index 2  -->
           <!-- 'detail' to add litte icon beside each item -->
-          <ion-item *ngFor="let place of loadedPlaces" [routerLink]="['/', 'places','tabs', 'discover', place.placeId]"
-            detail>
+          <ion-item *ngFor="let country of covidCountryList"
+            [routerLink]="['/', 'places', 'tabs', 'discover', country?.country_name]" [state]="covidObj" detail>
             <ion-thumbnail slot="start">
-              <ion-img [src]="place.imageUrl"></ion-img>
+              <ion-img src="https://source.unsplash.com/user/erondu/150x150"></ion-img>
             </ion-thumbnail>
             <ion-label>
-              <h2>{{place.title}}</h2>
-              <p>{{place.description}}</p>
+              <h2><strong>{{country.country_name}}</strong></h2>
+              <p>Cases:<strong style="color: red;"> {{country.total_cases }}</strong></p>
+              <p><small style="color: green;"> {{country.new_cases}}</small></p>
             </ion-label>
           </ion-item>
         </ion-list>
